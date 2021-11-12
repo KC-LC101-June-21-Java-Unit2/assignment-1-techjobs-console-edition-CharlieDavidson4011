@@ -27,7 +27,7 @@ public class TechJobsTest {
 
     private static String runProgramWithInput(String input) {
         Scanner in = new Scanner(input);
-        TechJobs.in = in;
+        TechJobs.side = in;
         TechJobs.main(null);
         return baos.toString();
     }

@@ -98,11 +98,11 @@ public class JobData {
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value){
 
-        loadData();                                                             // load data, if not already loaded
+        loadData();
 
-        ArrayList<HashMap<String, String>> jobsByValue = new ArrayList<>();     // populate with matched values
-        String tempValue = "";                                                  // holds temporary HashMap string values; used in comparison to search value
-        boolean foundValue;                                                     // true when search value found in HashMap row
+        ArrayList<HashMap<String, String>> jobsByValue = new ArrayList<>();
+        String tempValue = "";
+        boolean foundValue;
 
         for (HashMap<String, String> row : allJobs){
             foundValue = false;
@@ -152,7 +152,7 @@ public class JobData {
                 allJobs.add(newJob);
             }
 
-            // flag the data as loaded, so we don't do it twice
+
             isDataLoaded = true;
 
         } catch (IOException e) {
