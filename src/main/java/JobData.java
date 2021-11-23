@@ -15,7 +15,7 @@ import java.util.List;
 public class JobData {
 
     private static final String DATA_FILE = "resources/job_data.csv";
-    private static Boolean isDataLoaded = false;
+    private static boolean isDataLoaded = false;
 
     private static ArrayList<HashMap<String, String>> allJobs;
 
@@ -23,7 +23,6 @@ public class JobData {
      * Fetch list of all values from loaded data,
      * without duplicates, for a given column.
      *
-     * @param field The column to retrieve values from
      * @return List of all of the values of the given field
      */
     public static ArrayList<String> findAll(String field) {
@@ -42,14 +41,6 @@ public class JobData {
         }
 
         return values;
-    }
-
-    public static ArrayList<HashMap<String, String>> findByColumnAndValue() {
-
-        // load data, if not already loaded
-        loadData();
-
-        return allJobs;
     }
 
     /**
@@ -76,8 +67,7 @@ public class JobData {
 
             String aValue = row.get(column);
             aValue = aValue.toLowerCase();                  //Added for lowerCase MUST REMEMBER STRING IMMUTABILITY!!!
-//            System.out.println(value);                    //Added for debug
-//            System.out.println(aValue);                   //Added for debug
+
             if (aValue.contains(value.toLowerCase())) {     //Added for lowerCase
 //            if (aValue.contains(value)) {                 /Replaced with above line to make case insensitive
                 jobs.add(row);
@@ -136,7 +126,7 @@ public class JobData {
             Reader in = new FileReader(DATA_FILE);
             CSVParser parser = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
             List<CSVRecord> records = parser.getRecords();
-            Integer numberOfColumns = records.get(0).size();
+            int numberOfColumns = records.get(0).size();
             String[] headers = parser.getHeaderMap().keySet().toArray(new String[numberOfColumns]);
 
             allJobs = new ArrayList<>();
@@ -160,6 +150,7 @@ public class JobData {
             e.printStackTrace();
         }
     }
+
 
 }
 

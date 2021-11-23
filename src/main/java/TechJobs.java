@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;                           //Added
@@ -8,8 +9,8 @@ import java.util.Scanner;
  */
 public class TechJobs {
 
+    private static final Scanner in = new Scanner(System.in);
     public static Scanner side;
-    private static Scanner in = new Scanner(System.in);
 
     public static void main (String[] args) {
 
@@ -31,14 +32,14 @@ public class TechJobs {
         // Allow the user to search until they manually quit
         while (true) {
 
-            String actionChoice = getUserSelection("View jobs by:", actionChoices);  //0Search or 1List
+            String actionChoice = getUserSelection("View Jobs By:", actionChoices);  //0Search or 1List
 
             if (actionChoice.equals("list")) {  //1
 
                 String columnChoice = getUserSelection("List", columnChoices);  // 0All, 1Pos, 2Emp, 3Loc, 4Skill
 
                 if (columnChoice.equals("all")) {  //0All
-                    printJobs(JobData.findAll());
+                  columnChoices.put("all", "All");
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
@@ -71,16 +72,15 @@ public class TechJobs {
         }
     }
 
-    // ﻿Returns the key of the selected item from the choices Dictionary
+
     private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
 
-        Integer choiceIdx;
-        Boolean validChoice = false;
+        int choiceIdx;
+        boolean validChoice = false;
         String[] choiceKeys = new String[choices.size()];
 
-        // Put the choices in an ordered structure so we can
-        // associate an integer with each one
-        Integer i = 0;
+
+        int i = 0;
         for (String choiceKey : choices.keySet()) {
             choiceKeys[i] = choiceKey;
             i++;
@@ -91,7 +91,7 @@ public class TechJobs {
             System.out.println("\n" + menuHeader);
 
             // Print available choices
-            for (Integer j = 0; j < choiceKeys.length; j++) {
+            for (int j = 0; j < choiceKeys.length; j++) {
                 System.out.println("" + j + " - " + choices.get(choiceKeys[j]));
             }
 
